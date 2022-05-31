@@ -5,41 +5,46 @@
 <head>
 
 
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz App</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Bootstrap files -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-        crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz App</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Bootstrap files -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+    crossorigin="anonymous"></script>
 </head>
 
 
-<body>
+<body onload="init()">
 
   <header>
     <div>Quiz App</div>
   </header>
 
-  <div class="card" style="width: 18rem;">
-    <img src="img/mustang.jpg" class="card-img-top">
-    <div class="card-body">
-      <h5 class="card-title">Welches Auto siehst du Hier ?</h5>
-      <p class="card-text"></p>
+  <div class="container">
+    <div class="card">
+      <img class="question_picture" src="img/mustang.jpg" class="card-img-top">
+      <div class="card-body">
+        <h5 id="main-question" class="card-title"></h5>
+        <p class="card-text"></p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <div id="answer_1" class="pt quiz-answer list-group-item" onclick="answer('answer_1')"> Frage 1</div>
+        <div id="answer_2" class="pt quiz-answer list-group-item" onclick="answer('answer_2')"> frage 2</div>
+        <div id="answer_3" class="pt quiz-answer list-group-item" onclick="answer('answer_3')"> frage 3</div>
+        <div id="answer_4" class="pt quiz-answer list-group-item" onclick="answer('answer_4')"> frage 4</div>
+      </ul>
+      <div class="next-question">
+        <span><b>1</b> von <b id="all-questions"></b> Fragen </span>
+        <button class="btn btn-outline-primary">Nächste Frage</button>
+      </div>
     </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">Frage 1</li>
-      <li class="list-group-item">frage 2</li>
-      <li class="list-group-item">frage 3</li>
-      <li class="list-group-item">frage 4</li>
-    </ul>
-  
   </div>
 
 </body>

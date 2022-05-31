@@ -1,7 +1,6 @@
 body {
     margin: 0;
     padding: 0;
-    min-height: 100vh;
     background-color: #7dbeff !important;
 }
 
@@ -13,4 +12,38 @@ header {
     background-color: lightgrey;
     padding-bottom: 15px;
     padding-top: 10px;
+}
+
+.container {
+    min-height: 90vh;
+    background-color: #7dbeff !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.card {
+    width: 45rem;
+}
+
+.question_picture {
+    height: 500px;
+    object-fit: cover;
+}
+
+.btn-outline-primary {
+    width: 50%;
+}
+
+.next-question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between !important;
+    margin: 10px;
+}
+
+.quiz-answer:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.1);
 }
