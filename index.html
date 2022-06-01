@@ -29,10 +29,15 @@
 
   <div class="container_content">
     <div style="display:none ;" id="question-body" class="card"> <img class="end-screen-picture" src="img/trophy.jpg">
-      <b>Quiz Beendet!</b> <div class="end">Du hast <b>XXX</b> Fragen von <b>XXX</b> Fragen richtig beantwortet</div>
+      <b>Quiz Beendet!</b> <div class="end">Du hast <b id="right-questions">XXX</b>
+         Fragen von <b id="questions-lenght">XXX</b> Fragen richtig beantwortet</div>
+         <div class="repeat"><button onclick=" repeatGame()" id="new-game-button" class="btn btn-outline-primary">Erneut Spielen</button></div>
     </div>
     <div id="card-body" class="card">
       <img class="question_picture" src="img/quiz.jpg" class="card-img-top">
+      <div class="progress margin-top">
+        <div id="progress" class="progress-bar" role="progressbar" style="width: 0%;">0%</div>
+      </div>
       <div class="card-body">
         <h5 id="main-question" class="card-title"></h5>
         <p class="card-text"></p>
@@ -45,7 +50,7 @@
       </ul>
       <div class="next-question">
         <span><b id="curennt-number">1</b> von <b id="all-questions"></b> Fragen </span>
-        <button onclick="nextQuestion()" disabled id="next-button" class="btn btn-outline-primary">Nächste
+        <button onclick="nextQuestion()" disabled id="next-button" class="btn btn-outline-primary btn-width">Nächste
           Frage</button>
       </div>
     </div>
