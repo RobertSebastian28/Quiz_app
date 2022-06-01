@@ -1,43 +1,40 @@
 let questions = [
     {
-        'image': 'img/mustang.jpg',
-        'question': 'Welches Auto siehst du hier ?',
-        'answer_1': 'Ein Chevrolet Camaro',
-        'answer_2': 'Ein Bentley Continental',
-        'answer_3': 'Ein Ford Kuga',
-        'answer_4': 'Ein Ford Mustang 500 GT',
+        'question': 'Welcher dieser Gegenstände wird zum Spinn Fischen verwendet ?',
+        'answer_1': 'Ein Kolben',
+        'answer_2': 'Ein Dübel',
+        'answer_3': 'Ein Hering',
+        'answer_4': 'Ein Popper',
         'right_answer': '4'
     },
     {
-        'image': 'img/audi.jpg',
-        'question': 'Welches Auto siehst du hier ?',
-        'answer_1': 'Ein Audi A6',
-        'answer_2': 'Ein Mercedes Vito',
-        'answer_3': 'Ein Opel Corsa',
-        'answer_4': 'Ein Audi R8',
+        'question': 'Wer hat das erste Computer Programm geschrieben ?',
+        'answer_1': 'Paris Hilton',
+        'answer_2': 'Johannes Gutenberg',
+        'answer_3': 'Albert Einstein',
+        'answer_4': 'Ada Lovelace',
         'right_answer': '4'
     },
     {
-        'image': 'img/vw.jpg',
-        'question': 'Welches Auto siehst du hier ?',
-        'answer_1': 'Ein VW Beatle',
-        'answer_2': 'Ein Koenigsegg Regera',
-        'answer_3': 'Ein VW Käfer',
-        'answer_4': 'Ein Porsche Caymen',
+        'question': 'Das Zentrum unserer Milchstraße ...?',
+        'answer_1': 'riecht nach Honig',
+        'answer_2': 'ist 19000 Lichtjahre von der Erde entfernt',
+        'answer_3': 'schmeckt nach Himbeere',
+        'answer_4': 'kling nach Vogelgezwitscher',
         'right_answer': '3'
     },
     {
-        'image': 'img/gtr.jpg',
-        'question': 'Welches Auto siehst du hier ?',
-        'answer_1': 'Ein Nissan GTR',
-        'answer_2': 'Ein Ford Focus',
-        'answer_3': 'Ein toyota Supra',
-        'answer_4': 'Ein Nissan Skyline 2000',
+        'question': 'Was entwickelt die NASA seit einigen Jahren ?',
+        'answer_1': 'interplanetares Internet',
+        'answer_2': 'sauerstofferzeugenden Raketenantrieb',
+        'answer_3': 'Tiefschlafkapsel für Reisen zum Jupiter',
+        'answer_4': 'Raumschiffe mit extrem dicker Metall verkleidung',
         'right_answer': '1'
     },
 ];
 
 let currentQuestion = 0;
+
 
 function init() {
     document.getElementById('all-questions').innerHTML = questions.length;
@@ -76,13 +73,19 @@ function answer(selection) {
 }
 
 function nextQuestion() {
-    let numberOfQuestion = 1;
-    numberOfQuestion ++;
 
-    currentQuestion++;
-    document.getElementById('curennt-number').innerHTML = numberOfQuestion;
-    resetQuestionsButtons();
-    showQuestion();
+    if (currentQuestion >= 3) {
+          document.getElementById('question-body').style = '';
+          document.getElementById('question-body').style = 'text-align: center';
+          document.getElementById('card-body').style ='display:none'; 
+        
+    }
+    else {
+        currentQuestion++;
+        document.getElementById('curennt-number').innerHTML = currentQuestion + 1;
+        resetQuestionsButtons();
+        showQuestion();
+    }
 
 
 }

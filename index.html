@@ -27,9 +27,12 @@
     <div>Quiz App</div>
   </header>
 
-  <div class="container">
-    <div class="card">
-      <img class="question_picture" src="img/mustang.jpg" class="card-img-top">
+  <div class="container_content">
+    <div style="display:none ;" id="question-body" class="card"> <img class="end-screen-picture" src="img/trophy.jpg">
+      <b>Quiz Beendet!</b> <div class="end">Du hast <b>XXX</b> Fragen von <b>XXX</b> Fragen richtig beantwortet</div>
+    </div>
+    <div id="card-body" class="card">
+      <img class="question_picture" src="img/quiz.jpg" class="card-img-top">
       <div class="card-body">
         <h5 id="main-question" class="card-title"></h5>
         <p class="card-text"></p>
@@ -41,8 +44,9 @@
         <div id="answer_4" class="pt quiz-answer list-group-item" onclick="answer('answer_4')"> frage 4</div>
       </ul>
       <div class="next-question">
-        <span><b>1</b> von <b id="all-questions"></b> Fragen </span>
-        <button onclick="nextQuestion()" disabled id="next-button" class="btn btn-outline-primary">Nächste Frage</button>
+        <span><b id="curennt-number">1</b> von <b id="all-questions"></b> Fragen </span>
+        <button onclick="nextQuestion()" disabled id="next-button" class="btn btn-outline-primary">Nächste
+          Frage</button>
       </div>
     </div>
   </div>
