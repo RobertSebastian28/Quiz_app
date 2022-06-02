@@ -35,6 +35,8 @@ let questions = [
 
 let currentQuestion = 0;
 let rightQuestions = 0;
+let success = new Audio('audio/sucess.mp3');
+let wrong = new Audio('audio/wrong.mp3');
 
 function init() {
     document.getElementById('all-questions').innerHTML = questions.length;
@@ -43,12 +45,7 @@ function init() {
 
 function showQuestion() {
     let question = questions[currentQuestion];
-    let percent = currentQuestion / questions.length;
-    percent = Math.round(percent * 100);
-
-
-    document.getElementById('progress').innerHTML = `${percent} %`;
-    document.getElementById('progress').style = `width:${percent}%;`;
+    updateProgress();
 
     document.getElementById('main-question').innerHTML = question['question'];
     document.getElementById('answer_1').innerHTML = question['answer_1'];
@@ -66,38 +63,40 @@ function answer(selection) {
 
     let IdOfRightAnswer = `answer_${question['right_answer']}`;
 
-    if (selectedQuestionNumber == question['right_answer']) {
+    if (rightAnswerSelected(selectedQuestionNumber,question)) {
         rightQuestions++;
+        success.play();
         document.getElementById(selection).classList.add('bg-success');
     }
     else {
         document.getElementById(selection).classList.add('bg-danger');
         document.getElementById(IdOfRightAnswer).classList.add('bg-success');
-
+        wrong.play();
     }
     document.getElementById('next-button').disabled = false;
 }
 
-function nextQuestion() {
-    // Show End Screen
-    if (currentQuestion == questions.length - 1) {
+function rightAnswerSelected(selectedQuestionNumber,question) {
+    return selectedQuestionNumber == question['right_answer'];
+}
 
-        document.getElementById('question-body').style = '';
-        document.getElementById('question-body').style = 'text-align: center';
-        document.getElementById('card-body').style = 'display:none';
-        document.getElementById('questions-lenght').innerHTML = questions.length;
-        document.getElementById('right-questions').innerHTML = rightQuestions;
+// Clean Code für jeden einfach zu verstehen
+function nextQuestion() { 
 
+    if (gameIsOver()) {
+
+        showEndScreen();
     }
-    else {
-        currentQuestion++;
+    else { // Next Question
 
-        document.getElementById('curennt-number').innerHTML = currentQuestion + 1;
-        resetQuestionsButtons();
-        showQuestion();
+        updateQuestion();
     }
 
 
+}
+
+function gameIsOver() {
+    return currentQuestion == questions.length - 1;
 }
 
 function resetQuestionsButtons() {
@@ -115,10 +114,35 @@ function resetQuestionsButtons() {
 function repeatGame() {
     currentQuestion = 0;
     rightQuestions = 0;
-    
+
     document.getElementById('curennt-number').innerHTML = currentQuestion + 1;
     document.getElementById('question-body').style = 'display:none;';
     document.getElementById('card-body').style = '';
     resetQuestionsButtons();
     init();
+}
+
+function showEndScreen() {
+    document.getElementById('question-body').style = '';
+    document.getElementById('question-body').style = 'text-align: center';
+    document.getElementById('card-body').style = 'display:none';
+    document.getElementById('questions-lenght').innerHTML = questions.length;
+    document.getElementById('right-questions').innerHTML = rightQuestions;
+}
+
+function updateQuestion() {
+    currentQuestion++;
+
+    document.getElementById('curennt-number').innerHTML = currentQuestion + 1;
+    resetQuestionsButtons();
+    showQuestion();
+}
+
+function updateProgress() {
+    let percent = currentQuestion / questions.length;
+    percent = Math.round(percent * 100);
+
+
+    document.getElementById('progress').innerHTML = `${percent} %`;
+    document.getElementById('progress').style = `width:${percent}%;`;
 }
